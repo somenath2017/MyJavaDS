@@ -35,6 +35,55 @@ public class BasicLinkedList<X> {
 		nodeCount++; //Update Node count
 	}
 	
+	public void insert(X item, int position)
+	{
+		if(size() < position ){
+			throw new IllegalStateException("Linked List smaller than current postion");
+		}
+		
+		Node currentNode = first;
+		
+		for(int i=1;i<position && currentNode != null;i++)
+		{
+			currentNode = currentNode.getNextNode();
+		}
+		
+		Node nodeTobeInserted = new Node(item);
+		Node tempNode = currentNode.getNextNode();
+		currentNode.setNextNode(nodeTobeInserted);
+		nodeTobeInserted.setNextNode(tempNode);
+		
+		nodeCount++;
+		
+	}
+	
+	
+	public X removeAt(int position)
+	{
+		X item = null;
+		
+		if(size() < position ){
+			throw new IllegalStateException("Linked List smaller than current postion");
+		}
+		
+		Node currentNode = first;
+		Node prevNode = first;
+		
+		for(int i=1;i<position && currentNode != null;i++)
+		{
+			prevNode = currentNode;
+			currentNode = currentNode.getNextNode();
+			
+		}
+		
+		item = currentNode.getNodeItem();
+		prevNode.setNextNode(currentNode.getNextNode());
+		nodeCount--;
+		
+		return item;
+	}
+	
+	
 	public X remove()
 	{
 		X item = null;
@@ -71,6 +120,7 @@ public class BasicLinkedList<X> {
 		public Node getNextNode()
 		{
 			return nextNode;
+			
 		}
 		
 		public X getNodeItem()
