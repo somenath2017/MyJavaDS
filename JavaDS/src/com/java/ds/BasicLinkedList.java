@@ -24,7 +24,7 @@ public class BasicLinkedList<X> {
 		if(first == null)  //Linkedlist empty. Need to add first node
 		{
 			first = new Node(item);
-			first = last;
+			last = first;
 			
 		}else{ //Grab the last node and update it. 
 			
@@ -83,6 +83,28 @@ public class BasicLinkedList<X> {
 		return item;
 	}
 	
+	public int find(X item)
+	{
+		if(first == null)
+		{
+			throw new IllegalStateException("List is not populated");
+		}
+		
+		Node currentNode = first;
+		
+		for (int i=1;i < size() && currentNode!= null ;i++)
+		{
+			if(currentNode.getNodeItem().equals(item))
+			{
+				return i;
+			}
+			
+			currentNode = currentNode.getNextNode();
+		}
+		
+		return -1;
+	}
+	
 	
 	public X remove()
 	{
@@ -99,6 +121,53 @@ public class BasicLinkedList<X> {
 		}
 		
 		return item;
+	}
+	
+	public X get(int position)
+	{
+		X item = null;
+		
+		if(position > size() || first == null)
+		{
+			throw new IllegalStateException("Please check th index position");
+		}
+		
+		Node firstNode = first;
+		
+		for (int i = 1;i < size() ;i++)
+		{
+			if( i == position)
+			{
+				item = firstNode.getNodeItem();
+				return item;
+			}
+			
+			firstNode = firstNode.getNextNode();
+		}
+		
+		
+		return null;// No Node item found
+	}
+	
+	@Override
+	public String toString() {
+		
+		StringBuffer sbf = new StringBuffer();
+		Node currentNode = first;
+		
+		while(currentNode != null)
+		{
+			sbf.append(currentNode.getNodeItem());
+			currentNode = currentNode.getNextNode();
+
+			if(currentNode != null)
+			{
+				sbf.append(", ");
+			}
+		}
+		
+		
+		return sbf.toString();
 	}
 
 	private class Node{
@@ -127,6 +196,9 @@ public class BasicLinkedList<X> {
 		{
 			return item;
 		}
+
+		
+		
 		
 	}
 }
