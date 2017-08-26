@@ -28,5 +28,11 @@ public class LinkedListTest {
 		System.out.println("List After Deleting an Element");
 		employeeList.displayList();
 		
+		System.out.println("Find the 1st Employee in the list");
+		Employee resultEmp = employeeList.find(e3);
+		System.out.println("Employee is :"+ resultEmp);
+		
+		
+		
 	}
 }

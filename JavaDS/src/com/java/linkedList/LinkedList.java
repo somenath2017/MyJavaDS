@@ -53,4 +53,67 @@ public class LinkedList<T> {
 			
 		
 	}
+	
+	/**
+	 * Find the element from a list. 
+	 * @param data
+	 * @return
+	 */
+	public T find(T data)
+	{
+		Link<T> link = null;
+		if(isEmpty())
+		{
+			System.out.println("List is Empty");
+		}else{
+			link = first;
+			while(link != null){
+				if(data.equals(link.getData())){
+					break;
+				}
+				link = link.next;
+			}
+			//System.out.println("");
+		}
+		
+		return null!=link ? link.getData() : null;
+	}
+	
+	
+	/**
+	 * Delete the given element from a list
+	 */
+	
+	public T deleteFromList(T data)
+	{
+		Link<T> currentLink = null;
+		Link<T> previousLink = null;
+		
+		if(isEmpty()){
+			System.out.println("List is Empty");
+			return null;
+		}
+		
+		currentLink = first;
+		previousLink = first;
+		while(!currentLink.getData().equals(data)){
+			if(currentLink.next == null)
+			{
+				return null;
+			}else{
+				previousLink = currentLink;
+				currentLink = currentLink.next;
+			}
+		}
+		
+		if(currentLink == first)
+		{
+			first = first.next;
+		}else{
+			
+			previousLink.next = currentLink.next;
+		}
+		
+		return null!=currentLink ? currentLink.getData() : null;
+	}
 }
