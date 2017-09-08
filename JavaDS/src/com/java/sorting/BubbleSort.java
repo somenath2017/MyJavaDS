@@ -18,5 +18,5 @@ public class BubbleSort {
 
 		} while (IsSwapped);
 	}
-
+ 
 }
