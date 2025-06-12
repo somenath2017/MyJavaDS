@@ -1,7 +1,7 @@
 package com.java.neetCode150;
 
 import java.util.HashMap;
-import java.util.Map;
+
 
 /**
  * Given an array of integers nums and an integer target, return the indices i and j such that nums[i] + nums[j] == target and i != j.
@@ -9,7 +9,9 @@ import java.util.Map;
 public class TwoSum {
 
     public static void main(String[] args) {
-
+        int[] input = {4,5,2};
+        int[] output = returnTwoSum(input, 7);
+        System.out.println("Indices 1st " + output[0] + " 2nd :" + output[1]);
     }
 
     public static int[] returnTwoSum(int[] numArray, int target)
